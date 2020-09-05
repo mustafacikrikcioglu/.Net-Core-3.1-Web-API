@@ -1,4 +1,6 @@
 ﻿Mustafa ÇIKRIKÇIOĞLU
+mustafa.cikrikcioglu@hotmail.com
+
 .Net Core 3.1 ve MsSQL Server ile Web API projesi
 
 
@@ -20,3 +22,4 @@ Bağımlılıklarınıda; Inject yada AutoFac gibi Frameworklerle değilde .Net 
 8.) API loglama yaptığı için geniş loglama yaptırmadım, 'C' Harddiskinde '@LogsDapperApi' klasör açar ve içinede 'DapperForApi-20200906.txt' dosya açıp yazmasını sağladım. 
 Şimdilik log sadece problem olduğunda Application start olduğunu Host ortamını ve Contentin projenin bulunduğu klasörü logluyacaktır.
 9.) Projenin static dosyalarını tarayıcı her açıldığında yüklemesin tarayıcının Cachinde kalsın diye ayar yaptım 'Startup.cs' dosyasının içinde 'contet.Context.Response.Headers.Append("Cache-Control", $"public, max-age={604800}")' satırı ile.
+10 ve son) MsSQL Server DataSource adını yanlış yazmamalı yada SQL DB sinin adını yanlış yazmamalı çünkü SQL ile haberleştirir iken API yi araya TRY-CATCH kullanmadım, gözümden kaçmadı kullanmak istemedim API Response 200 verir ama biz bilgi alamayız unutmayalım.
