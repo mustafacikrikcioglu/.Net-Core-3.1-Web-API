@@ -20,7 +20,7 @@ namespace DapperForApi.Middlewares
         {
             try
             {
-                // ilk Http Context bilgisinin düþeceði yer.
+                // todo ilk Http Context bilgisinin düþeceði yer.
                 await _next(context);
             }
             catch (Exception ex)

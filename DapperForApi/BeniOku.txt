@@ -1,0 +1,22 @@
+﻿Mustafa ÇIKRIKÇIOĞLU
+.Net Core 3.1 ve MsSQL Server ile Web API projesi
+
+
+Yüklenen Nuget paketleri ise:
+Dapper ORM SQL ile haberleşme,
+Serilog.Extensions.Logging.File Log dosyası tutturma,
+Swashbuckle.AspNetCore API ler için otomatik döküman sunan Swagger.
+
+
+1.) MsSQL ile haberleşeceği için önce SQL Serverda DataBase oluşturulmalı bunun için SSMS Query ekranına 'DataBaseOlusturma.sql' dosyası 1 kere çalıştırılmalı ve 
+SQL de 'DappeApi' diye bir DB oluşturucak ve içinede 2 adet tablo oluşturacak isimlerinede 'dbo.Kategori' ve 'dbo.Urun' verecek. İçerisinede 3er satır bilgi kaydedecek.
+2.) MsSQL Server ConnectionStringini ayarlamak için ise, 'AppBilgilerim.cs' dosyasının içinde 'SqlDapperApi' string değişkenini düzenlememiz gerekir.
+3.) Proje canlıya atıldığı zaman domain ismi yazıldığında direk swagger yardım sayfası gelmesi için 'launchSettings.json' dosyasının içindeki "launchUrl": "swagger/index.html", satırlarını düzenlemeliyiz.
+4.) Proje canlıya atıldığı zaman 'launchSettings.json' dosyasının içine "applicationUrl": "https://localhost:5001;http://localhost:5000", satırlarınıda canlı domain adresimiz ne ise ona göre düzenlemeliyiz.
+5.) Proje nin tarayıcı sekmesinde TITLE ismi "Mustafa ÇIKRIKÇIOĞLU ©" dur bunu düzeltmek için 'AppBilgilerim.cs' dosyasının içinde 'AppDeveloper' string değişkenini düzenlememiz gerekir.
+6.) Vaktim kısıtlı olduğu için N-Tier(Katmanlı) Mimari olarak yapmadım projeyi ama DataAccessLayer katmanı için 'LayerDal' klasörünü, BusinessLayer katmanı içinde 'LayerBusiness' klasörünü kullanıp böyle bir desen yaptım.
+Bağımlılıklarınıda; Inject yada AutoFac gibi Frameworklerle değilde .Net in kendi Ioc Containiri mantığı ile "services.AddTransient<IKategoriBusiness, KategoriBusiness>();" gibi satırları 'Startup.cs' dosyasına ekleyerek, bağımlılığı ortadan kaldırdım.
+7.) API in Response sıkıştırmasını 'GzipCompressionProvider' ile 'CompressionLevel.Fastest' yöntemi ile sıkıştırıp istekte bulunan kişiye cevap olarak dönmesini istedim.
+8.) API loglama yaptığı için geniş loglama yaptırmadım, 'C' Harddiskinde '@LogsDapperApi' klasör açar ve içinede 'DapperForApi-20200906.txt' dosya açıp yazmasını sağladım. 
+Şimdilik log sadece problem olduğunda Application start olduğunu Host ortamını ve Contentin projenin bulunduğu klasörü logluyacaktır.
+9.) Projenin static dosyalarını tarayıcı her açıldığında yüklemesin tarayıcının Cachinde kalsın diye ayar yaptım 'Startup.cs' dosyasının içinde 'contet.Context.Response.Headers.Append("Cache-Control", $"public, max-age={604800}")' satırı ile.
